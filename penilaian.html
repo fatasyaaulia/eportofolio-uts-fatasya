@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Profil Mahasiswa - Fatasya Aulia Suyono</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              mono: ["Fira Code", "monospace"],
+            },
+            colors: {
+              cyber: {
+                blue: "#007AFF",
+                cyan: "#32ADE6",
+                purple: "#AF52DE",
+                indigo: "#5856D6",
+              },
+            },
+            animation: {
+              "fade-in-up":
+                "fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+              float: "float 6s ease-in-out infinite",
+              "pulse-ring":
+                "pulseRing 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              blink: "blink 1s step-end infinite",
+            },
+            keyframes: {
+              fadeInUp: {
+                "0%": { opacity: "0", transform: "translateY(40px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-15px)" },
+              },
+              pulseRing: {
+                "0%": { transform: "scale(0.8)", opacity: "0.5" },
+                "100%": { transform: "scale(1.5)", opacity: "0" },
+              },
+              blink: {
+                "0%, 100%": { opacity: "1" },
+                "50%": { opacity: "0" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Apple Mesh Gradient & Cyber Tech Background */
+      body {
+        background-color: #f2f4f8;
+        background-image:
+          radial-gradient(
+            at 0% 0%,
+            rgba(50, 173, 230, 0.15) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 100% 0%,
+            rgba(175, 82, 222, 0.15) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 100% 100%,
+            rgba(0, 122, 255, 0.15) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 0% 100%,
+            rgba(88, 86, 214, 0.15) 0px,
+            transparent 50%
+          );
+        background-attachment: fixed;
+        color: #1d1d1f;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      /* Tech Grid Overlay */
+      .tech-grid-bg {
+        background-size: 40px 40px;
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(0, 122, 255, 0.05) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(0, 122, 255, 0.05) 1px,
+            transparent 1px
+          );
+      }
+
+      /* Apple Glassmorphism Bento Card */
+      .bento-card {
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(24px) saturate(150%);
+        -webkit-backdrop-filter: blur(24px) saturate(150%);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        border-right: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow:
+          0 20px 40px -10px rgba(0, 122, 255, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 1);
+        border-radius: 2.5rem;
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .bento-card:hover {
+        transform: translateY(-5px);
+        box-shadow:
+          0 30px 60px -15px rgba(0, 122, 255, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 1);
+        border-color: rgba(0, 122, 255, 0.3);
+        background: rgba(255, 255, 255, 0.65);
+      }
+
+      /* Iframe Scaling for Thumbnail */
+      .iframe-thumb {
+        width: 200%;
+        height: 200%;
+        transform: scale(0.5);
+        transform-origin: 0 0;
+        border: none;
+      }
+
+      /* Animation Delays */
+      .delay-100 {
+        animation-delay: 100ms;
+      }
+      .delay-200 {
+        animation-delay: 200ms;
+      }
+      .delay-300 {
+        animation-delay: 300ms;
+      }
+      .delay-400 {
+        animation-delay: 400ms;
+      }
+      .delay-500 {
+        animation-delay: 500ms;
+      }
+    </style>
+  </head>
+  <body class="antialiased relative min-h-screen flex flex-col">
+    <div class="fixed inset-0 tech-grid-bg pointer-events-none z-0"></div>
+    <div
+      class="fixed top-20 left-20 w-72 h-72 border-[1px] border-cyber-purple/20 rounded-full animate-[spin_25s_linear_infinite] border-dashed pointer-events-none z-0"
+    ></div>
+
+    <nav class="fixed w-full z-50 mt-4 px-6 transition-all duration-300">
+      <div
+        class="max-w-[1300px] mx-auto bg-white/60 backdrop-blur-2xl border border-white/80 shadow-[0_8px_30px_rgba(0,0,0,0.04)] rounded-full px-6 py-3 flex justify-between items-center"
+      >
+        <div class="flex items-center gap-3 group cursor-pointer relative">
+          <div
+            class="absolute inset-0 bg-cyber-blue rounded-xl animate-pulse-ring"
+          ></div>
+          <div
+            class="w-10 h-10 bg-gradient-to-br from-cyber-blue to-cyber-cyan text-white rounded-xl flex items-center justify-center font-mono font-bold text-lg shadow-lg relative z-10 group-hover:scale-105 transition-transform"
+          >
+            &lt;/&gt;
+          </div>
+          <div>
+            <h1
+              class="font-bold text-gray-900 text-lg leading-none tracking-tight"
+            >
+              Fatasya<span class="text-cyber-blue animate-blink">_</span>
+            </h1>
+            <p
+              class="text-[9px] text-gray-500 font-bold font-mono uppercase tracking-widest mt-1"
+            >
+              E-Portofolio
+            </p>
+          </div>
+        </div>
+
+        <div class="hidden md:flex items-center gap-1">
+          <a
+            href="index.html"
+            class="px-5 py-2.5 text-gray-600 hover:bg-white/50 hover:text-cyber-blue rounded-full text-sm font-semibold transition"
+            >Beranda</a
+          >
+          <a
+            href="profil.html"
+            class="px-5 py-2.5 text-gray-600 hover:bg-white/50 hover:text-cyber-blue rounded-full text-sm font-semibold transition"
+            >Profil</a
+          >
+          <a
+            href="analisis.html"
+            class="px-5 py-2.5 text-gray-600 hover:bg-white/50 hover:text-cyber-blue rounded-full text-sm font-semibold transition"
+            >Analisis & Refleksi</a
+          >
+          <a
+            href="penilaian.html"
+            class="px-5 py-2.5 bg-white text-cyber-blue border-b-2 border-cyber-blue rounded-full text-sm font-bold shadow-sm transition"
+            >Penilaian</a
+          >
+          <a
+            href="model_guru.html"
+            class="px-5 py-2.5 text-gray-600 hover:bg-white/50 hover:text-cyber-blue rounded-full text-sm font-semibold transition"
+            >Model Guru</a
+          >
+        </div>
+
+        <a
+          href="https://wa.me/6285732003774"
+          target="_blank"
+          class="hidden md:flex items-center gap-2 bg-gradient-to-r from-cyber-blue to-cyber-cyan text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/30 hover:scale-105 transition-transform"
+        >
+          <i class="fab fa-whatsapp"></i> Kontak
+        </a>
+
+        <button
+          id="mobile-menu-button"
+          class="md:hidden text-gray-800 text-2xl focus:outline-none bg-white/50 p-2 rounded-full"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden absolute top-20 left-6 right-6 bg-white/90 backdrop-blur-2xl border border-white shadow-2xl rounded-3xl flex flex-col p-4 space-y-2 font-medium z-40"
+      >
+        <a
+          href="index.html"
+          class="block w-full text-gray-600 hover:bg-gray-50 p-3 rounded-2xl"
+          >Beranda</a
+        >
+        <a
+          href="profil.html"
+          class="block w-full text-gray-600 hover:bg-gray-50 p-3 rounded-2xl"
+          >Profil</a
+        >
+        <a
+          href="analisis.html"
+          class="block w-full text-gray-600 hover:bg-gray-50 p-3 rounded-2xl"
+          >Analisis & Refleksi</a
+        >
+        <a
+          href="penilaian.html"
+          class="block w-full text-cyber-blue bg-blue-50 p-3 rounded-2xl font-bold"
+          >Penilaian</a
+        >
+        <a
+          href="model_guru.html"
+          class="block w-full text-gray-600 hover:bg-gray-50 p-3 rounded-2xl"
+          >Model Guru</a
+        >
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main
+      class="flex-1 max-w-[1300px] mx-auto w-full pt-40 pb-20 px-6 lg:px-8 relative z-10 space-y-8"
+    >
+      <!-- ==========================================
+             1. HERO SECTION
+             ========================================== -->
+      <div
+        class="text-center opacity-0 animate-fade-in-up flex flex-col items-center justify-center pt-4 pb-6"
+      >
+        <div
+          class="flex items-center gap-2 mb-4 bg-white/60 backdrop-blur-md px-4 py-2 rounded-full border border-blue-100 shadow-sm"
+        >
+          <span
+            class="text-cyber-blue font-bold text-[10px] uppercase tracking-widest"
+            >DOKUMENTASI PENILAIAN PPG PRAJABATAN</span
+          >
+        </div>
+
+        <h1
+          class="text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight tracking-tight mb-4"
+        >
+          Hasil
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-blue via-cyber-cyan to-cyber-purple"
+            >Penilaian & Evaluasi</span
+          >
+        </h1>
+
+        <p class="text-gray-600 text-base md:text-lg leading-relaxed max-w-1xl">
+          Bukti atas Perolehan Dan Pencapaian PPL & Dosen Pembimbing Lapangan
+          (DPL)
+        </p>
+      </div>
+
+      <!-- ==========================================
+             2. STATUS VALIDASI DOKUMEN
+             ========================================== -->
+      <section
+        class="bento-card p-6 md:p-8 opacity-0 animate-fade-in-up delay-100 flex flex-col md:flex-row items-center justify-between gap-6"
+      >
+        <div class="flex items-center gap-4">
+          <div
+            class="w-14 h-14 bg-blue-50 text-cyber-blue rounded-2xl flex items-center justify-center text-2xl shadow-sm border border-blue-100"
+          >
+            <i class="fas fa-clipboard-check"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900">
+              Status Validasi Dokumen
+            </h3>
+            <p class="text-sm text-gray-500 mt-1">
+              Dokumen penilahan telah divalidasi dan diverifikasi
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+          <div
+            class="bg-white border border-gray-200 px-4 py-3 rounded-xl flex-1 md:flex-none text-center shadow-sm"
+          >
+            <p class="text-xs font-bold text-gray-800 mb-1">Siklus 1</p>
+            <div class="flex items-center justify-center gap-1.5">
+              <span class="text-[10px] text-gray-500 uppercase">Status</span>
+              <span
+                class="text-[10px] font-bold text-green-600 flex items-center gap-1"
+                >Tervalidasi <i class="fas fa-check-circle"></i
+              ></span>
+            </div>
+          </div>
+          <div
+            class="bg-white border border-gray-200 px-4 py-3 rounded-xl flex-1 md:flex-none text-center shadow-sm"
+          >
+            <p class="text-xs font-bold text-gray-800 mb-1">Siklus 2</p>
+            <div class="flex items-center justify-center gap-1.5">
+              <span class="text-[10px] text-gray-500 uppercase">Status</span>
+              <span
+                class="text-[10px] font-bold text-green-600 flex items-center gap-1"
+                >Tervalidasi <i class="fas fa-check-circle"></i
+              ></span>
+            </div>
+          </div>
+          <div
+            class="bg-white border border-gray-200 px-4 py-3 rounded-xl flex-1 md:flex-none text-center shadow-sm"
+          >
+            <p class="text-xs font-bold text-gray-800 mb-1">Siklus 3</p>
+            <div class="flex items-center justify-center gap-1.5">
+              <span class="text-[10px] text-gray-500 uppercase">Status</span>
+              <span
+                class="text-[10px] font-bold text-green-600 flex items-center gap-1"
+                >Tervalidasi <i class="fas fa-check-circle"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+             3. PENILAIAN SIKLUS 1
+             ========================================== -->
+      <section
+        class="bento-card p-6 md:p-10 opacity-0 animate-fade-in-up delay-200"
+      >
+        <div
+          class="flex items-center gap-4 mb-8 pb-4 border-b border-gray-200/60"
+        >
+          <div
+            class="w-10 h-10 bg-gray-900 text-white rounded-xl flex items-center justify-center text-lg font-bold font-mono shadow-md"
+          >
+            01
+          </div>
+          <h2 class="text-2xl font-bold text-gray-900">Penilaian Siklus 1</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Kolom 1: Pembimbing -->
+          <div class="space-y-4">
+            <span
+              class="bg-amber-100 text-amber-600 font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-widest border border-amber-200"
+              >LAMPIRAN 7</span
+            >
+            <h3 class="font-bold text-gray-900 text-sm">
+              Instrumen Penilaian Penguasaan Perangkat Pembelajaran
+            </h3>
+
+            <!-- Fixed Iframe Thumbnail -->
+            <div
+              class="relative group cursor-pointer w-full"
+              onclick="
+                openModal(
+                  '<i class=\'fas fa-file-word text-blue-500\'></i> Penilaian Perangkat Siklus 1',
+                  'https://drive.google.com/file/d/1CfZT8nXf0GohA6RXtdNhMSFvqS7o85-W/preview',
+                )
+              "
+            >
+              <div
+                class="relative bg-gray-100 rounded-2xl overflow-hidden shadow-sm border border-gray-200 aspect-[4/3] w-full"
+              >
+                <div class="iframe-thumb-wrapper">
+                  <iframe
+                    src="https://drive.google.com/file/d/1CfZT8nXf0GohA6RXtdNhMSFvqS7o85-W/preview"
+                    class="absolute top-0 left-0 iframe-thumb opacity-60 pointer-events-none"
+                    frameborder="0"
+                    scrolling="no"
+                  ></iframe>
+                </div>
+                <!-- Hover Overlay -->
+                <div
+                  class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 group-hover:bg-black/60 transition-all duration-300"
+                >
+                  <div
+                    class="w-14 h-14 bg-white text-cyber-blue rounded-full flex items-center justify-center mb-3 shadow-xl transform group-hover:scale-110 transition-transform duration-300"
+                  >
+                    <i class="fas fa-expand-alt text-2xl"></i>
+                  </div>
+                  <span
+                    class="bg-cyber-blue text-white px-6 py-2 rounded-full text-xs font-bold tracking-wide shadow-lg transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+                  >
+                    Pratinjau Dokumen
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom 2: Guru Mitra -->
+          <div class="space-y-4">
+            <span
+              class="bg-blue-100 text-blue-600 font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-widest border border-blue-200"
+              >LAMPIRAN 8</span
+            >
+            <h3 class="font-bold text-gray-900 text-sm">
+              Instrumen Penilaian Praktik Mengajar
+            </h3>
+
+            <!-- Fixed Iframe Thumbnail -->
+            <div
+              class="relative group cursor-pointer w-full"
+              onclick="
+                openModal(
+                  '<i class=\'fas fa-file-word text-blue-500\'></i> Penilaian Praktik Siklus 1',
+                  'https://drive.google.com/file/d/1CfZT8nXf0GohA6RXtdNhMSFvqS7o85-W/preview',
+                )
+              "
+            >
+              <div
+                class="relative bg-gray-100 rounded-2xl overflow-hidden shadow-sm border border-gray-200 aspect-[4/3] w-full"
+              >
+                <div class="iframe-thumb-wrapper">
+                  <iframe
+                    src="https://drive.google.com/file/d/1CfZT8nXf0GohA6RXtdNhMSFvqS7o85-W/preview"
+                    class="absolute top-0 left-0 iframe-thumb opacity-60 pointer-events-none"
+                    frameborder="0"
+                    scrolling="no"
+                  ></iframe>
+                </div>
+                <!-- Hover Overlay -->
+                <div
+                  class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 group-hover:bg-black/60 transition-all duration-300"
+                >
+                  <div
+                    class="w-14 h-14 bg-white text-cyber-blue rounded-full flex items-center justify-center mb-3 shadow-xl transform group-hover:scale-110 transition-transform duration-300"
+                  >
+                    <i class="fas fa-expand-alt text-2xl"></i>
+                  </div>
+                  <span
+                    class="bg-cyber-blue text-white px-6 py-2 rounded-full text-xs font-bold tracking-wide shadow-lg transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+                  >
+                    Pratinjau Dokumen
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+             4. PENILAIAN SIKLUS 2
+             ========================================== -->
+      <section
+        class="bento-card p-6 md:p-10 opacity-0 animate-fade-in-up delay-300"
+      >
+        <div
+          class="flex items-center gap-4 mb-8 pb-4 border-b border-gray-200/60"
+        >
+          <div
+            class="w-10 h-10 bg-gray-900 text-white rounded-xl flex items-center justify-center text-lg font-bold font-mono shadow-md"
+          >
+            02
+          </div>
+          <h2 class="text-2xl font-bold text-gray-900">Penilaian Siklus 2</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Kolom 1: Pembimbing -->
+          <div class="space-y-4">
+            <span
+              class="bg-amber-100 text-amber-600 font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-widest border border-amber-200"
+              >LAMPIRAN 7</span
+            >
+            <h3 class="font-bold text-gray-900 text-sm">
+              Instrumen Penilaian Penguasaan Perangkat Pembelajaran
+            </h3>
+
+            <div
+              class="relative group cursor-pointer w-full"
+              onclick="
+                openModal(
+                  '<i class=\'fas fa-file-word text-blue-500\'></i> Penilaian Perangkat Siklus 2',
+                  'https://drive.google.com/file/d/1CfZT8nXf0GohA6RXtdNhMSFvqS7o85-W/preview',
+                )
+              "
+            >
+              <div
+                class="relative bg-gray-100 rounded-2xl overflow-hidden shadow-sm border border-gray-200 aspect-[4/3] w-full"
+              >
+                <div class="iframe-thumb-wrapper">
+                  <iframe
+                    src="https://drive.google.com/file/d/1CfZT8nXf0GohA6RXtdNhMSFvqS7o85-W/preview"
+                    class="absolute top-0 left-0 iframe-thumb opacity-60 pointer-events-none"
+                    frameborder="0"
+                    scrolling="no"
+                  ></iframe>
+                </div>
+                <div
+                  class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 group-hover:bg-black/60 transition-all duration-300"
+                >
+                  <div
+                    class="w-14 h-14 bg-white text-cyber-blue rounded-full flex items-center justify-center mb-3 shadow-xl transform group-hover:scale-110 transition-transform duration-300"
+                  >
+                    <i class="fas fa-expand-alt text-2xl"></i>
+                  </div>
+                  <span
+                    class="bg-cyber-blue text-white px-6 py-2 rounded-full text-xs font-bold tracking-wide shadow-lg transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+                    >Pratinjau Dokumen</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom 2: Guru Mitra -->
+          <div class="space-y-4">
+            <span
+              class="bg-blue-100 text-blue-600 font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-widest border border-blue-200"
+              >LAMPIRAN 8</span
+            >
+            <h3 class="font-bold text-gray-900 text-sm">
+              Instrumen Penilaian Praktik Mengajar
+            </h3>
+
+            <div
+              class="relative group cursor-pointer w-full"
+              onclick="
+                openModal(
+                  '<i class=\'fas fa-file-word text-blue-500\'></i> Penilaian Praktik Siklus 2',
+                  'https://drive.google.com/file/d/1CfZT8nXf0GohA6RXtdNhMSFvqS7o85-W/preview',
+                )
+              "
+            >
+              <div
+                class="relative bg-gray-100 rounded-2xl overflow-hidden shadow-sm border border-gray-200 aspect-[4/3] w-full"
+              >
+                <div class="iframe-thumb-wrapper">
+                  <iframe
+                    src="https://drive.google.com/file/d/1CfZT8nXf0GohA6RXtdNhMSFvqS7o85-W/preview"
+                    class="absolute top-0 left-0 iframe-thumb opacity-60 pointer-events-none"
+                    frameborder="0"
+                    scrolling="no"
+                  ></iframe>
+                </div>
+                <div
+                  class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 group-hover:bg-black/60 transition-all duration-300"
+                >
+                  <div
+                    class="w-14 h-14 bg-white text-cyber-blue rounded-full flex items-center justify-center mb-3 shadow-xl transform group-hover:scale-110 transition-transform duration-300"
+                  >
+                    <i class="fas fa-expand-alt text-2xl"></i>
+                  </div>
+                  <span
+                    class="bg-cyber-blue text-white px-6 py-2 rounded-full text-xs font-bold tracking-wide shadow-lg transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+                    >Pratinjau Dokumen</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+             5. PENILAIAN SIKLUS 3
+             ========================================== -->
+      <section
+        class="bento-card p-6 md:p-10 opacity-0 animate-fade-in-up delay-400"
+      >
+        <div
+          class="flex items-center gap-4 mb-8 pb-4 border-b border-gray-200/60"
+        >
+          <div
+            class="w-10 h-10 bg-gray-900 text-white rounded-xl flex items-center justify-center text-lg font-bold font-mono shadow-md"
+          >
+            03
+          </div>
+          <h2 class="text-2xl font-bold text-gray-900">Penilaian Siklus 3</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Kolom 1: Pembimbing -->
+          <div class="space-y-4">
+            <span
+              class="bg-amber-100 text-amber-600 font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-widest border border-amber-200"
+              >LAMPIRAN 7</span
+            >
+            <h3 class="font-bold text-gray-900 text-sm">
+              Instrumen Penilaian Penguasaan Perangkat Pembelajaran
+            </h3>
+
+            <div
+              class="relative group cursor-pointer w-full"
+              onclick="
+                openModal(
+                  '<i class=\'fas fa-file-word text-blue-500\'></i> Penilaian Perangkat Siklus 3',
+                  'https://drive.google.com/file/d/1CfZT8nXf0GohA6RXtdNhMSFvqS7o85-W/preview',
+                )
+              "
+            >
+              <div
+                class="relative bg-gray-100 rounded-2xl overflow-hidden shadow-sm border border-gray-200 aspect-[4/3] w-full"
+              >
+                <div class="iframe-thumb-wrapper">
+                  <iframe
+                    src="https://drive.google.com/file/d/1CfZT8nXf0GohA6RXtdNhMSFvqS7o85-W/preview"
+                    class="absolute top-0 left-0 iframe-thumb opacity-60 pointer-events-none"
+                    frameborder="0"
+                    scrolling="no"
+                  ></iframe>
+                </div>
+                <div
+                  class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 group-hover:bg-black/60 transition-all duration-300"
+                >
+                  <div
+                    class="w-14 h-14 bg-white text-cyber-blue rounded-full flex items-center justify-center mb-3 shadow-xl transform group-hover:scale-110 transition-transform duration-300"
+                  >
+                    <i class="fas fa-expand-alt text-2xl"></i>
+                  </div>
+                  <span
+                    class="bg-cyber-blue text-white px-6 py-2 rounded-full text-xs font-bold tracking-wide shadow-lg transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+                    >Pratinjau Dokumen</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom 2: Guru Mitra -->
+          <div class="space-y-4">
+            <span
+              class="bg-blue-100 text-blue-600 font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-widest border border-blue-200"
+              >LAMPIRAN 8</span
+            >
+            <h3 class="font-bold text-gray-900 text-sm">
+              Instrumen Penilaian Praktik Mengajar
+            </h3>
+
+            <div
+              class="relative group cursor-pointer w-full"
+              onclick="
+                openModal(
+                  '<i class=\'fas fa-file-word text-blue-500\'></i> Penilaian Praktik Siklus 3',
+                  'https://drive.google.com/file/d/1CfZT8nXf0GohA6RXtdNhMSFvqS7o85-W/preview',
+                )
+              "
+            >
+              <div
+                class="relative bg-gray-100 rounded-2xl overflow-hidden shadow-sm border border-gray-200 aspect-[4/3] w-full"
+              >
+                <div class="iframe-thumb-wrapper">
+                  <iframe
+                    src="https://drive.google.com/file/d/1CfZT8nXf0GohA6RXtdNhMSFvqS7o85-W/preview"
+                    class="absolute top-0 left-0 iframe-thumb opacity-60 pointer-events-none"
+                    frameborder="0"
+                    scrolling="no"
+                  ></iframe>
+                </div>
+                <div
+                  class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 group-hover:bg-black/60 transition-all duration-300"
+                >
+                  <div
+                    class="w-14 h-14 bg-white text-cyber-blue rounded-full flex items-center justify-center mb-3 shadow-xl transform group-hover:scale-110 transition-transform duration-300"
+                  >
+                    <i class="fas fa-expand-alt text-2xl"></i>
+                  </div>
+                  <span
+                    class="bg-cyber-blue text-white px-6 py-2 rounded-full text-xs font-bold tracking-wide shadow-lg transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+                    >Pratinjau Dokumen</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="py-8 border-t border-white/50 relative z-10 bg-white/40 backdrop-blur-md mt-auto"
+    >
+      <div
+        class="max-w-[1300px] mx-auto px-6 flex flex-col md:flex-row items-center justify-center text-xs font-mono text-gray-500 font-medium"
+      >
+        <p>© 2026 Fatasya Aulia Suyono. E-Portofolio.</p>
+      </div>
+    </footer>
+
+    <!-- ==========================================
+         GLOBAL MODAL UNTUK PREVIEW IFRAME
+         ========================================== -->
+    <div
+      id="mediaModal"
+      class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-gray-900/60 backdrop-blur-sm opacity-0 transition-opacity duration-300"
+    >
+      <div
+        class="bg-white rounded-3xl w-11/12 md:w-4/5 lg:w-3/4 xl:w-2/3 h-[85vh] flex flex-col shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300 relative border border-white/40"
+      >
+        <div
+          class="flex justify-between items-center p-4 md:px-6 bg-gray-50 border-b border-gray-200"
+        >
+          <h3
+            id="modalTitle"
+            class="font-bold text-gray-800 text-sm md:text-base flex items-center gap-2"
+          >
+            Pratinjau Dokumen
+          </h3>
+          <button
+            onclick="closeModal()"
+            class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-600 hover:bg-red-500 hover:text-white transition-colors"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="flex-1 bg-gray-100 relative">
+          <div
+            id="modalLoading"
+            class="absolute inset-0 flex flex-col items-center justify-center z-0"
+          >
+            <i
+              class="fas fa-circle-notch fa-spin text-4xl text-cyber-blue mb-4"
+            ></i>
+            <p class="text-sm font-mono text-gray-500 animate-pulse">
+              Memuat Dokumen...
+            </p>
+          </div>
+          <iframe
+            id="modalIframe"
+            src=""
+            class="absolute inset-0 w-full h-full border-none z-10 bg-white"
+            allow="autoplay"
+            onload="
+              document.getElementById('modalLoading').classList.add('hidden')
+            "
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      // 1. Mobile Menu Script
+      const btn = document.getElementById("mobile-menu-button");
+      const menu = document.getElementById("mobile-menu");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+        const icon = btn.querySelector("i");
+        if (menu.classList.contains("hidden")) {
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+        } else {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-times");
+        }
+      });
+
+      // 2. Modal Functionality Script
+      function openModal(titleHTML, url) {
+        document.getElementById("modalTitle").innerHTML = titleHTML;
+        document.getElementById("modalLoading").classList.remove("hidden");
+        document.getElementById("modalIframe").src = url;
+
+        const modal = document.getElementById("mediaModal");
+        modal.classList.remove("hidden");
+
+        setTimeout(() => {
+          modal.classList.remove("opacity-0");
+          modal.querySelector("div.bg-white").classList.remove("scale-95");
+          modal.querySelector("div.bg-white").classList.add("scale-100");
+        }, 10);
+
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("mediaModal");
+
+        modal.classList.add("opacity-0");
+        modal.querySelector("div.bg-white").classList.remove("scale-100");
+        modal.querySelector("div.bg-white").classList.add("scale-95");
+
+        setTimeout(() => {
+          modal.classList.add("hidden");
+          document.getElementById("modalIframe").src = "";
+          document.body.style.overflow = "auto";
+        }, 300);
+      }
+
+      document
+        .getElementById("mediaModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeModal();
+          }
+        });
+    </script>
+  </body>
+</html>
